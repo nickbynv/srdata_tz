@@ -14,7 +14,7 @@ export default function App() {
     created: ""
   })
 
-  const searchKeys = Object.keys(search) as (keyof typeof search)[]
+  const searchFields = Object.keys(search) as (keyof typeof search)[]
 
   const [modalToggle, setModalToggle] = useState(false)
 
@@ -28,9 +28,10 @@ export default function App() {
       </button>
 
       <div className="flex flex-col p-5 bg-white border border-gray-200 rounded-xl mt-2 shadow-md">
-        {searchKeys.map(field => (
+        {searchFields.map(field => (
           <input
-            value={search[field as keyof typeof search]}
+            key={field}
+            value={search[field]}
             onChange={(e) => setSearch(prev => ({ ...prev, [field]: e.target.value }))}
             className="border border-gray-200 rounded-xl px-3 py-1 mt-2 first:mt-0"
             placeholder={`Search by ${field}`}
@@ -41,7 +42,7 @@ export default function App() {
 
     <div className="md:w-[45rem] p-2">
       {contacts?.filter(contact => (
-        searchKeys.every(field => (
+        searchFields.every(field => (
           contact[field].toLowerCase().includes(search[field].toLowerCase())
         ))
       )).map(contact => <Contact key={contact.id} contact={contact} />)}
