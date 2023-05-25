@@ -54,13 +54,11 @@ export default function NewTodoModal(props: {
                 })
 
                 const formatPhoneNumber = (phoneNumber: string) => {
-                    const countryCode = phoneNumber.slice(0, 1);
-                    const areaCode = phoneNumber.slice(1, 4);
-                    const remainingDigits = phoneNumber.slice(4);
+                    const countryCode = phoneNumber.slice(0, 1)
+                    const areaCode = phoneNumber.slice(1, 4)
+                    const remainingDigits = phoneNumber.slice(4)
 
-                    const formattedPhoneNumber = `+${countryCode} ${areaCode} ${remainingDigits.match(/.{1,2}/g)?.join('-')}`;
-
-                    return formattedPhoneNumber;
+                    return `+${countryCode} ${areaCode} ${remainingDigits.match(/.{1,2}/g)?.join('-')}`
                 }
 
                 add({
