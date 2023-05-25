@@ -74,9 +74,7 @@ export default function Todo(props: {
                         </button>
                     )}
 
-                    <button onClick={() => {
-                        remove(props.todo.id)
-                    }}>
+                    <button onClick={() => remove(props.todo.id)}>
                         <FaTrashAlt size={22} className="text-red-800 ml-3" />
                     </button>
                 </div>
